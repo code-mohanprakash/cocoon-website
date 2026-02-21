@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Inter is loaded via next/font in layout.tsx — zero external font requests */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #F5F1E8;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  font-family: inherit, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip to content — keyboard nav */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #1A1A1A;
+  color: white;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s;
+}
+.skip-nav:focus { top: 0; }
+
+/* Global focus-visible */
+:focus-visible {
+  outline: 2px solid #A8B84D;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ─── Pastel / Artistic Design System ─────────────────────────── */
+
+/* Gradient text — lime-green accent */
+.text-gradient {
+  background: linear-gradient(135deg, #A8B84D 0%, #C5D86D 60%, #D4E880 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero background — warm cream with soft green bokeh (matches app icon) */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -5%,  rgba(197, 216, 109, 0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 85% 55%,  rgba(168, 184,  77, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 10% 70%,  rgba(232, 212, 184, 0.35) 0%, transparent 55%),
+    #F5F1E8;
+}
+
+/* Pastel card — warm beige with bold outline (matches icon aesthetic) */
+.pastel-card {
+  background: #E8D4B8;
+  border: 2px solid rgba(26, 26, 26, 0.12);
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.06), 0 1px 4px rgba(26, 26, 26, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.pastel-card:hover {
+  box-shadow: 0 12px 32px rgba(26, 26, 26, 0.10), 0 4px 12px rgba(26, 26, 26, 0.06);
+}
+
+/* Light card — slightly lighter cream for contrast sections */
+.light-card {
+  background: rgba(245, 241, 232, 0.80);
+  border: 1.5px solid rgba(26, 26, 26, 0.08);
+  box-shadow: 0 2px 12px rgba(26, 26, 26, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.light-card:hover {
+  background: rgba(245, 241, 232, 0.95);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+}
+
+/* Card lift on hover */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(26, 26, 26, 0.10), 0 4px 12px rgba(26, 26, 26, 0.06);
+}
+
+/* Leaf-green nav/glass — warm tinted frosted */
+.glass {
+  background: rgba(245, 241, 232, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+/* Primary button — lime green with bold black outline (matches icon) */
+.btn-primary {
+  background: #C5D86D;
+  border: 2px solid #1A1A1A;
+  color: #1A1A1A;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px #1A1A1A;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-primary:hover {
+  box-shadow: 5px 5px 0px #1A1A1A;
+  transform: translate(-1px, -1px);
+}
+.btn-primary:active {
+  box-shadow: 1px 1px 0px #1A1A1A;
+  transform: translate(1px, 1px);
+}
+
+/* Secondary button — warm beige with bold black outline */
+.btn-secondary {
+  background: #F5F1E8;
+  border: 2px solid #1A1A1A;
+  color: #1A1A1A;
+  font-weight: 700;
+  box-shadow: 3px 3px 0px rgba(26, 26, 26, 0.25);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-secondary:hover {
+  box-shadow: 5px 5px 0px rgba(26, 26, 26, 0.25);
+  transform: translate(-1px, -1px);
+  background: #E8D4B8;
+}
+
+/* Subtle grain texture overlay — adds painterly feel */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.5;
+}
+
+/* Hide scrollbar utility for horizontal scroll tracks */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(26, 26, 26, 0.28); }
