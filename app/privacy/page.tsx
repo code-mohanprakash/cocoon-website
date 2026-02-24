@@ -3,21 +3,22 @@ import Link from 'next/link'
 
 const sections = [
   { id: 'intro',        label: '1. Introduction' },
-  { id: 'architecture', label: '2. Privacy-First Architecture' },
-  { id: 'collection',  label: '3. Information We Collect' },
-  { id: 'storage',     label: '4. Data Storage & Security' },
-  { id: 'models',      label: '5. AI Model Downloads' },
-  { id: 'network',     label: '6. Network Activity' },
-  { id: 'third-party', label: '7. Third-Party Services' },
-  { id: 'permissions', label: '8. Device Permissions' },
-  { id: 'sharing',     label: '9. Data Sharing & Disclosure' },
-  { id: 'retention',   label: '10. Data Retention & Deletion' },
-  { id: 'rights',      label: '11. Your Rights' },
-  { id: 'gdpr',        label: '12. European Users (GDPR)' },
-  { id: 'ccpa',        label: '13. California Users (CCPA)' },
-  { id: 'children',    label: '14. Children\'s Privacy' },
-  { id: 'changes',     label: '15. Changes to This Policy' },
-  { id: 'contact',     label: '16. Contact Us' },
+  { id: 'ai-usage',     label: '2. How Cocoon Uses AI' },
+  { id: 'architecture', label: '3. Privacy-First Architecture' },
+  { id: 'collection',  label: '4. Information We Collect' },
+  { id: 'storage',     label: '5. Data Storage & Security' },
+  { id: 'models',      label: '6. AI Model Downloads' },
+  { id: 'network',     label: '7. Network Activity' },
+  { id: 'third-party', label: '8. Third-Party Services' },
+  { id: 'permissions', label: '9. Device Permissions' },
+  { id: 'sharing',     label: '10. Data Sharing & Disclosure' },
+  { id: 'retention',   label: '11. Data Retention & Deletion' },
+  { id: 'rights',      label: '12. Your Rights' },
+  { id: 'gdpr',        label: '13. European Users (GDPR)' },
+  { id: 'ccpa',        label: '14. California Users (CCPA)' },
+  { id: 'children',    label: '15. Children\'s Privacy' },
+  { id: 'changes',     label: '16. Changes to This Policy' },
+  { id: 'contact',     label: '17. Contact Us' },
 ]
 
 export default function PrivacyPage() {
@@ -77,7 +78,7 @@ export default function PrivacyPage() {
               <svg className="w-3.5 h-3.5 text-leaf-dark" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd" />
               </svg>
-              <span className="text-xs font-semibold text-ink">Last updated: February 20, 2026</span>
+              <span className="text-xs font-semibold text-ink">Last updated: February 24, 2026</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl font-bold text-ink tracking-tight mb-4">
@@ -97,7 +98,17 @@ export default function PrivacyPage() {
               <p>By downloading or using Cocoon, you agree to this Privacy Policy. If you do not agree, please do not use the App.</p>
             </PolicySection>
 
-            <PolicySection id="architecture" title="2. Our Privacy-First Architecture">
+            <PolicySection id="ai-usage" title="2. How Cocoon Uses AI">
+              <p>Cocoon uses artificial intelligence for transcription and summarization. Before using these features, the App presents a clear disclosure and obtains your consent. Here is what you should know:</p>
+              <PrivacyList items={[
+                '100% On-Device AI: All transcription and summarization runs locally on your device. Your meeting audio, transcripts, and summaries are never sent to any external AI service.',
+                'No Cloud AI Services: Cocoon does not use OpenAI, Google, Anthropic, or any third-party cloud AI service. No meeting content is ever transmitted to third parties.',
+                'One-Time Model Download: AI model files are downloaded once from Hugging Face (huggingface.co), an open-source model repository. During this download, Hugging Face\'s servers may collect standard connection metadata (IP address, device type). No personal data or meeting content is sent.',
+                'User Consent: The App obtains your explicit consent before downloading AI models or processing any data.',
+              ]} />
+            </PolicySection>
+
+            <PolicySection id="architecture" title="3. Our Privacy-First Architecture">
               <p>Cocoon operates entirely on your device. This means:</p>
               <PrivacyList items={[
                 'All audio recording and transcription happens locally on your device',
@@ -111,7 +122,7 @@ export default function PrivacyPage() {
               ]} />
             </PolicySection>
 
-            <PolicySection id="collection" title="3. Information We Collect">
+            <PolicySection id="collection" title="4. Information We Collect">
               <SubHeading>a) Audio Recordings</SubHeading>
               <p>When you use the recording feature, Cocoon captures audio through your device's microphone. This audio is processed in real-time by Apple's on-device speech recognition (SFSpeechRecognizer) and is stored locally on your device. Audio data is never transmitted to any external server or third party.</p>
               <SubHeading>b) Transcripts & AI Summaries</SubHeading>
@@ -126,7 +137,7 @@ export default function PrivacyPage() {
               <p>On macOS, Cocoon may request access to your calendar to display upcoming meetings for context. Calendar data is read locally and is never stored, copied, or transmitted by the App.</p>
             </PolicySection>
 
-            <PolicySection id="storage" title="4. Data Storage & Security">
+            <PolicySection id="storage" title="5. Data Storage & Security">
               <p>All meeting data is stored locally on your device using the following protections:</p>
               <PrivacyList items={[
                 'Encrypted Storage: Meeting transcripts and summaries are encrypted using AES-256 encryption via Apple\'s CryptoKit framework before being stored in Core Data',
@@ -138,7 +149,7 @@ export default function PrivacyPage() {
               <p>You maintain full control over your data and can delete individual meetings or all data at any time through the App's interface.</p>
             </PolicySection>
 
-            <PolicySection id="models" title="5. AI Model Downloads & Hugging Face">
+            <PolicySection id="models" title="6. AI Model Downloads & Hugging Face">
               <p>On first launch, Cocoon downloads one open-source AI model to enable on-device summarization:</p>
               <PrivacyList items={[
                 'LLaMA (Summarization) — An open-source language model developed by Meta, downloaded from Hugging Face',
@@ -153,7 +164,7 @@ export default function PrivacyPage() {
               </p>
             </PolicySection>
 
-            <PolicySection id="network" title="6. Network Activity">
+            <PolicySection id="network" title="7. Network Activity">
               <p>Cocoon makes network requests only in the following limited circumstances:</p>
               <PrivacyList items={[
                 'Model Downloads: One-time HTTPS downloads from Hugging Face to retrieve AI model files during initial setup',
@@ -162,7 +173,7 @@ export default function PrivacyPage() {
               <p>After models are downloaded and aside from optional iCloud sync, Cocoon requires no internet connection.</p>
             </PolicySection>
 
-            <PolicySection id="third-party" title="7. Third-Party Services">
+            <PolicySection id="third-party" title="8. Third-Party Services">
               <p><strong>Hugging Face</strong> — Used exclusively for the one-time download of open-source AI model files.</p>
               <p><strong>Apple iCloud (Optional)</strong> — When iCloud sync is enabled, meeting data uses end-to-end encryption. Apple cannot read your meeting content.</p>
               <p>Cocoon does <strong>not</strong> integrate any of the following:</p>
@@ -175,7 +186,7 @@ export default function PrivacyPage() {
               ]} />
             </PolicySection>
 
-            <PolicySection id="permissions" title="8. Device Permissions">
+            <PolicySection id="permissions" title="9. Device Permissions">
               <PrivacyList items={[
                 'Microphone (Required): Used to record meeting audio for transcription. Audio is processed and stored locally.',
                 'Sign in with Apple (Optional): Used for cross-device sync identity. Only an anonymous identifier is stored in your Keychain. Your email, name, and Apple ID password are never accessed or stored by the App.',
@@ -184,11 +195,11 @@ export default function PrivacyPage() {
               ]} />
             </PolicySection>
 
-            <PolicySection id="sharing" title="9. Data Sharing & Disclosure">
+            <PolicySection id="sharing" title="10. Data Sharing & Disclosure">
               <p>We do not share, sell, rent, trade, or transfer your personal data to any third party. Since all data remains on your device and we have no access to it, there is no data for us to share.</p>
             </PolicySection>
 
-            <PolicySection id="retention" title="10. Data Retention & Deletion">
+            <PolicySection id="retention" title="11. Data Retention & Deletion">
               <PrivacyList items={[
                 'On-Device Data: Retained until you choose to delete it',
                 'iCloud Data: Synced if enabled; removed when you delete meetings in the App',
@@ -196,7 +207,7 @@ export default function PrivacyPage() {
               ]} />
             </PolicySection>
 
-            <PolicySection id="rights" title="11. Your Rights">
+            <PolicySection id="rights" title="12. Your Rights">
               <PrivacyList items={[
                 'Access: View all recordings, transcripts, and summaries directly in the App',
                 'Delete: Remove any individual meeting or all data at any time',
@@ -205,23 +216,23 @@ export default function PrivacyPage() {
               ]} />
             </PolicySection>
 
-            <PolicySection id="gdpr" title="12. European Users (GDPR)">
+            <PolicySection id="gdpr" title="13. European Users (GDPR)">
               <p>If you are located in the EEA, UK, or Switzerland, you have rights under GDPR including data minimization, right to erasure, and no international data transfers. Your data never leaves your device.</p>
             </PolicySection>
 
-            <PolicySection id="ccpa" title="13. California Users (CCPA/CPRA)">
+            <PolicySection id="ccpa" title="14. California Users (CCPA/CPRA)">
               <p>California residents have rights including the right to know, right to delete, and right to opt-out of sale. We do not sell your personal information and have never done so.</p>
             </PolicySection>
 
-            <PolicySection id="children" title="14. Children's Privacy">
+            <PolicySection id="children" title="15. Children's Privacy">
               <p>Cocoon is not directed at children under 13 (or 16 in the EEA). We do not knowingly collect personal information from children.</p>
             </PolicySection>
 
-            <PolicySection id="changes" title="15. Changes to This Policy">
+            <PolicySection id="changes" title="16. Changes to This Policy">
               <p>We may update this Privacy Policy to reflect changes in our practices or applicable laws. When we make changes, we will update the "Last updated" date. Continued use of the App after changes constitutes acceptance.</p>
             </PolicySection>
 
-            <PolicySection id="contact" title="16. Contact Us">
+            <PolicySection id="contact" title="17. Contact Us">
               <p>If you have questions, concerns, or requests regarding this Privacy Policy, please contact us:</p>
               <p><strong>Email:</strong>{' '}
                 <a href="mailto:mohanprakash462@gmail.com" className="text-leaf-dark hover:text-ink underline">
